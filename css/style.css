@@ -56,14 +56,70 @@ body {
     flex: 2;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espacio entre los campos de entrada */
+    gap: 10px; 
 }
 
 .input-entrada {
     width: 80%;
     padding: 14px;
-    border: 1px solid #333;
+    border: none;
     border-radius: 30px;
-    outline: none;
     margin-bottom: 15px;
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.05);
+    outline: none;
+    transition: box-shadow 0.3s ease; 
+}
+
+::placeholder {
+    color: #333;
+    font-size: 15px;
+}
+
+.input-entrada:focus {
+    width: 82%;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3); 
+    border: 2px solid #333; 
+}
+
+.forget {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
+
+#check {
+    margin-right: 10px;
+}
+a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.submit button {
+    width: 40%;
+    padding: 14px;
+    border: none;
+    border-radius: 30px;
+    margin-bottom: 15px;
+    background-color: #049A92; 
+    color: #fff; 
+    font-weight: bold;
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.submit button:hover {
+    background-color: #025358; 
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3); 
 }
