@@ -61,7 +61,7 @@
         gap: 10px; 
     }
 
-    .input-entrada {
+    .txtemail {
         width: 80%;
         padding: 14px;
         border: none;
@@ -72,12 +72,30 @@
         transition: box-shadow 0.3s ease; 
     }
 
+
+    .txtpassword {
+        width: 80%;
+        padding: 14px;
+        border: none;
+        border-radius: 30px;
+        margin-bottom: 15px;
+        box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.05);
+        outline: none;
+        transition: box-shadow 0.3s ease; 
+    }	
+
     ::placeholder {
         color: #333;
         font-size: 15px;
     }
 
-    .input-entrada:focus {
+    .txtemail:focus {
+        width: 82%;
+        box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3); 
+        border: 2px solid #333; 
+    }
+
+    .txtpassword:focus {
         width: 82%;
         box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3); 
         border: 2px solid #333; 
