@@ -1,3 +1,9 @@
+<?php
+// conexion de la base de datos
+require_once $_SERVER["DOCUMENT_ROOT"] . '/etc/config.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/models/conexion.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,26 +17,50 @@
 <?php
 session_start();
 
-$error = '';
-$email = ''; // Inicializar la variable para evitar el error
-$password = ''; // Inicializar la variable para evitar el error
+function get_connection() {
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "dbsistema"; // Se mantiene 'dbsistema'
 
-if (isset($_SESSION['txtemail'])) {
-  header("Location: http://localhost:8080/examen/vistas/dashboard.php");
-  exit();
-}
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $conn = new mysqli($servername, $username, $password, $dbname);
 
-  if (isset($_POST['txtemail']) && isset($_POST['txtpassword'])) {
-    $email = $_POST['txtemail'];
-    $password = $_POST['txtpassword'];
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
   }
 
-  if ($email == 'admin@gmail.com' && $password == '1234') {
-    header("Location: http://localhost:8080/examen/vistas/dashboard.php");
-    exit();
-  } else {
-    $error = 'credenciales incorrectas';
+  return $conn;
+}
+
+function get_user_credentials($email) { // Cambiado a 'email'
+  require_once $_SERVER['DOCUMENT_ROOT'].'/models/conexion.php';
+  $conn = get_connection();
+  $stmt = $conn->prepare("SELECT username, password FROM usuarios WHERE BINARY username = ? LIMIT 1"); // Cambiado a 'login', 'email' y 'password'
+  $stmt->bind_param("s", $email); // Parámetro ajustado a 'email'
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $user = $result->fetch_assoc();
+  $stmt->close();
+  $conn->close();
+  return $user;
+}
+
+$error = '';
+$email = ''; // Inicializar la variable
+$password = ''; // Inicializar la variable
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $v_email = $_POST["txtemail"] ?? ''; // Ajustado a 'txtemail'
+  $v_password = $_POST["txtpassword"] ?? ''; // Se mantiene 'txtpassword'
+
+  $user = get_user_credentials($v_email);
+
+  if ($user && $v_password === $user['password']) { // Verificación de credenciales
+      $_SESSION["txtemail"] = $v_email; // Se almacena 'txtemail' en la sesión
+      header('Location: '.get_views('dashboard.php'));
+      exit;
+  } else {      header('Location: '.get_views('claveequivocada.php'));
+      exit;
   }
 }
 ?>
@@ -78,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
   <div class="register">
-    <p>Don't have an account? <a href="./vistas/registar.php">Sign up</a></p>
+    <p>Don't have an account? <a href=<?php echo get_views('registar.php') ?>>Sign Up</a></p>
 
   </div>
   </body>

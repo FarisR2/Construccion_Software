@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/etc/config.php ';
+
 ?>
 
 <!DOCTYPE html>
@@ -10,9 +12,6 @@ session_start();
     <?php
     $_SESSION['favcolor'] = "green";
     $_SESSION['favanimal'] = "cat";
-
-    echo 'la variables han sido almacenadas';
-    echo '<br>';
     ?>
 
     <a href="./vervariables.php">ir a ver la variables</a>
