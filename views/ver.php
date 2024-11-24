@@ -3,16 +3,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/etc/config.php';
 require_once $_SERVER["DOCUMENT_ROOT"] . '/models/conexion.php';
 
 
-$host = "localhost";
-$namedb = "dbsistema";
-$userdb = "root";
-$passwordb = "";
-
-$conexion = new conexion($host, $namedb, $userdb, $passwordb);
-
-$pdo = $conexion->obtenerconexion();
-$query = $pdo->query("select id, username, perfil, password from usuarios");
-
 ?>
 
 

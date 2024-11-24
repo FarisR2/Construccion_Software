@@ -9,5 +9,5 @@
 
 # LOGIN 15
 
-# correo de admin: admin@gmail.com
+# correo de admin: ADMIN
 # contraseña admin: 1234

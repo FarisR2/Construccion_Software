@@ -2,8 +2,9 @@
 session_start();
 
 // Incluir los archivos necesarios
-require_once $_SERVER["DOCUMENT_ROOT"] . '/etc/config.php';
-require_once $_SERVER["DOCUMENT_ROOT"] . '/models/conexion.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/etc/config.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/models/connect/conexion.php';
+
 
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION["txtemail"])) {
@@ -11,19 +12,14 @@ if (!isset($_SESSION["txtemail"])) {
     exit();
 }
 
-// Configuración de la conexión a la base de datos
-$host = "localhost";
-$namedb = "dbsistema";
-$userdb = "root";
-$passwordb = "";
+$conexion = new Conexion();
+$pdo = $conexion->connection();
 
 // Inicializar variables
 $tempdbusername = '';
 $fila = null;
 
 // Establecer conexión con la base de datos
-$conexion = new conexion($host, $namedb, $userdb, $passwordb);
-$pdo = $conexion->obtenerconexion();
 
 // Verificar si se envió el formulario de búsqueda
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["action"] === "buscar") {

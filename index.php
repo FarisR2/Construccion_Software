@@ -1,7 +1,7 @@
 <?php
 // conexion de la base de datos
 require_once $_SERVER["DOCUMENT_ROOT"] . '/etc/config.php';
-require_once $_SERVER["DOCUMENT_ROOT"] . '/models/conexion.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/models/modeloUsuario.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,33 +17,9 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/models/conexion.php';
 <?php
 session_start();
 
-function get_connection() {
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "dbsistema"; // Se mantiene 'dbsistema'
-
-  $conn = new mysqli($servername, $username, $password, $dbname);
-
-  if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-  }
-
-  return $conn;
-}
-
-function get_user_credentials($email) { // Cambiado a 'email'
-  require_once $_SERVER['DOCUMENT_ROOT'].'/models/conexion.php';
-  $conn = get_connection();
-  $stmt = $conn->prepare("SELECT username, password FROM usuarios WHERE BINARY username = ? LIMIT 1"); // Cambiado a 'login', 'email' y 'password'
-  $stmt->bind_param("s", $email); // Parámetro ajustado a 'email'
-  $stmt->execute();
-  $result = $stmt->get_result();
-  $user = $result->fetch_assoc();
-  $stmt->close();
-  $conn->close();
-  return $user;
-}
+$conexion = new modeloUsuario();
+$query = $conexion->obtenerUsuarios();
+$usuario = $query[0];
 
 $error = '';
 $email = ''; // Inicializar la variable
@@ -53,17 +29,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $v_email = $_POST["txtemail"] ?? ''; // Ajustado a 'txtemail'
   $v_password = $_POST["txtpassword"] ?? ''; // Se mantiene 'txtpassword'
 
-  $user = get_user_credentials($v_email);
-
-  if ($user && $v_password === $user['password']) { // Verificación de credenciales
-      $_SESSION["txtemail"] = $v_email; // Se almacena 'txtemail' en la sesión
-      header('Location: '.get_views('dashboard.php'));
-      exit;
-  } else {      header('Location: '.get_views('claveequivocada.php'));
-      exit;
+  if ($usuario && $v_password === $usuario['password']) { // Verificación de credenciales
+    $_SESSION["txtemail"] = $v_email; // Se almacena 'txtemail' en la sesión
+    header('Location: ' . get_views('dashboard.php'));
+    exit;
+  } else {
+    header('Location: ' . get_views('claveequivocada.php'));
+    exit;
   }
 }
 ?>
+
 
 
 <div class="contenedor-login" id="contenedor-login">
