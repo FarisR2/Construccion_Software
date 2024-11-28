@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Silkscreen:wght@400;700&family=Tiny5&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Tiny5', 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../img/empresarial.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Tiny5', 'Roboto', sans-serif;
+}
+
+.contenedor-login {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    background: linear-gradient(to bottom, #F2F5E2, #C9CFC4);
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.contenedor-header {
+    text-align: center;
+    margin: 20px 0 40px 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.ladoizquierdo {
+    color: #333;
+    height: 300px;
+    width: 180px;
+    float : left;
+}
+
+.ladoizquierdo img {
+    margin-top: 52px;
+    margin-bottom: 20px; /* Espaciado inferior */
+    border-radius: 50%; /* Opcional: Hacerla circular */
+    background-color: #F2F5E2; /* Fondo (opcional) */
+    padding: 10px; /* Espaciado interno alrededor de la imagen */
+}
+
+.ladoizquierdo .username {
+    text-align: center;
+    margin-right: 40px;
+}
+
+.ladoizquierdo .password {
+    text-align: center;
+    margin-right: 40px;
+
+}
+
+.ladoderecho {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.txtusername {
+    width: 80%;
+    padding: 14px;
+    border: none;
+    border-radius: 30px;
+    margin-bottom: 15px;
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.05);
+    outline: none;
+    transition: box-shadow 0.3s ease; 
+}
+
+
+.txtpassword {
+    width: 80%;
+    padding: 14px;
+    border: none;
+    border-radius: 30px;
+    margin-bottom: 15px;
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.05);
+    outline: none;
+    transition: box-shadow 0.3s ease; 
+}	
+
+::placeholder {
+    color: #333;
+    font-size: 15px;
+}
+
+.txtusername:focus {
+    width: 82%;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3); 
+    border: 2px solid #333; 
+}
+
+.txtpassword:focus {
+    width: 82%;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3); 
+    border: 2px solid #333; 
+}
+
+.forget {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
+
+#check {
+    margin-right: 10px;
+}
+a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.submit button {
+    width: 40%;
+    padding: 14px;
+    border: none;
+    border-radius: 30px;
+    margin-bottom: 15px;
+    background-color: #049A92; 
+    color: #fff; 
+    font-weight: bold;
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.submit button:hover {
+    background-color: #025358; 
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3); 
+}

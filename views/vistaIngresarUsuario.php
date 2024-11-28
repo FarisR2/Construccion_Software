@@ -10,6 +10,7 @@ function mostrarFormularioIngreso($mensaje = '')
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Registrar Usuario</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href=<?php echo get_css('ingresar.css') ?>>
     </head>
 
     <body>
@@ -23,7 +24,7 @@ function mostrarFormularioIngreso($mensaje = '')
                 </div>
             <?php endif; ?>
 
-            <form action="../controllers/controladorIngresarUsuario.php" method="POST">
+            <form action=<?php echo get_controllers('controladorIngresarUsuario.php') ?> method="POST">
                 <label for="datusername"><i class="fas fa-user"></i> Usuario:</label>
                 <input type="text" name="datusername" id="datusername" required>
 

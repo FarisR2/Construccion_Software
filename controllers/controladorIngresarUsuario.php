@@ -4,7 +4,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/models/modeloUsuario.php';
 require_once $_SERVER["DOCUMENT_ROOT"] . '/views/vistaIngresarUsuario.php';
 
 // Verificar sesión
-if (!isset($_SESSION["txtemail"])) {
+if (!isset($_SESSION["txtusername"])) {
     header('Location: ' . get_UrlBase('index.php'));
     exit();
 }

@@ -23,7 +23,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/etc/config.php';
         <label for="username">Username</label>
         <input type="text" id="username" placeholder="Choose a username" />
 
-        <label for="email">Profile</label>
+        <label for="email">Perfil</label>
         <input type="email" id="email" placeholder="Enter your email" />
 
         <label for="password">Password</label>

@@ -3,7 +3,7 @@ session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/etc/config.php';
 require_once $_SERVER["DOCUMENT_ROOT"] . '/models/connect/conexion.php';
 
-if (!isset($_SESSION["txtemail"])) {
+if (!isset($_SESSION["txtusername"])) {
     header('Location: ' . get_UrlBase('index.php'));
     exit();
 }

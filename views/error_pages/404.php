@@ -10,7 +10,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/etc/config.php';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Error 404 - Página no encontrada</title>
-  <link rel="stylesheet" href='../css/404.css' ?> />
+  <link rel="stylesheet" href=<?php echo get_css('/404.css') ?> />
 </head>
 
 <body>

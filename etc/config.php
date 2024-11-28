@@ -44,7 +44,7 @@ function get_etc($arg1)
     return get_path('etc', $arg1);
 }
 
-function get_controller($arg1)
+function get_controllers($arg1)
 {
     return get_path('controllers', $arg1);
 }

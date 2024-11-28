@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clave Incorrecta</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
@@ -14,7 +14,7 @@
     </span>
     <br>
     <br>
-    <a href="index.php">Regresar</a>
+    <a href=<?php echo get_UrlBase('index.php') ?>>Regresar</a>
 </body>
 
 </html>
