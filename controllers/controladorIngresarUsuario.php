@@ -1,7 +1,8 @@
 <?php
-session_start();
-require_once $_SERVER["DOCUMENT_ROOT"] . '/models/modeloUsuario.php';
-require_once $_SERVER["DOCUMENT_ROOT"] . '/views/vistaIngresarUsuario.php';
+if(session_status() == PHP_SESSION_NONE){
+    session_start();
+}
+require_once $_SERVER["DOCUMENT_ROOT"]  . '/autoloads/autoloadIngresar.php';
 
 // Verificar sesión
 if (!isset($_SESSION["txtusername"])) {

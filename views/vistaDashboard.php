@@ -1,7 +1,4 @@
-<?php
-function vistaDashboard()
-{ ?>
-    <!DOCTYPE html>
+   <!DOCTYPE html>
     <html lang="es">
 
     <head>
@@ -36,37 +33,15 @@ function vistaDashboard()
         <div class="contenido">
             <!-- <h1>Bienvenido al Dashboard</h1> -->
             <?php
-            if (isset($_GET["opcion"])) {
-                $opcion = $_GET["opcion"];
-                // echo '<p>Has seleccionado: ' . htmlspecialchars($opcion) . '</p>';
+            
+
+
+            if(isset($contenido)) {
+                echo $contenido;
             } else {
-                $opcion = 'inicio';
+                echo "<h1>Bienvenido al Dashboard</h1>";
             }
-
-            switch ($opcion) {
-                case 'inicio':
-                    echo "<iframe src='" . get_views('inicio.php') . "' width='800' height='600'></iframe>";
-                    break;
-                case 'ver':
-                    echo "<iframe src='" . get_controllers('controladorUsuario.php') . "' width='800' height='600'></iframe>";
-                    break;
-                case 'ingresar':
-                    echo "<iframe src='" . get_controllers('controladorIngresarUsuario.php') . "' width='800' height='600'></iframe>";
-                    break;
-                case 'modificar':
-                    echo "<iframe src='" . get_controllers('controladorModificarUsuario.php') . "' width='800' height='600'></iframe>";
-                    break;
-                case 'eliminar':
-                    echo "<iframe src='" . get_controllers('controladorEliminarUsuario.php') . "' width='800' height='600'></iframe>";
-                    break;
-                default:
-                    echo '<p>No has seleccionado ninguna opción</p>';
-            }
-
             ?>
         </div>
         <script src=<?php echo get_js('dashboard.js') ?>></script>
     </body>
-<?php
-
-} ?>
