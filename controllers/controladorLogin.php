@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $usuarioEncontrado = array_filter($usuarios, function($user) use ($v_username, $v_password) {
         return $user["username"] === $v_username && $user["password"] === $v_password;
+        // Recorre todos los usuarios y devuelve aquel cuyo nombre de usuario y contraseña coincidan con los ingresados
     });
 
     if (!empty($usuarioEncontrado)) {
